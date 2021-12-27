@@ -43,6 +43,13 @@ export class ProductsService {
       
    }
 
+   deleteProduct(productId:string) {
+    const [product , index] = this.findProduct(productId);
+    if(!product){
+       throw new NotFoundException('Could not find product');
+    }
+   }
+
    private findProduct(id:string):[Product,number]{
       const productIndex = this.products.findIndex(prod => prod.id === id);
       const product = this.products[productIndex];
