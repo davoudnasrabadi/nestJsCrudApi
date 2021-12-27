@@ -48,7 +48,9 @@ export class ProductsService {
     if(!product){
        throw new NotFoundException('Could not find product');
     }
-   }
+    this.products.splice(index,1);
+     
+  }
 
    private findProduct(id:string):[Product,number]{
       const productIndex = this.products.findIndex(prod => prod.id === id);
